@@ -3,7 +3,9 @@ package visuales;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
@@ -16,7 +18,8 @@ public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
 
-	public MenuPrincipal() {
+
+	public MenuPrincipal(JList listaPeliculas, DefaultListModel pModel) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -34,8 +37,12 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmAgregar = new JMenuItem("Agregar");
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AgregarPeliculas x = new AgregarPeliculas();
-				x.cambioVisibilidad(true);
+				//contentPane.removeAll();
+				PanelAgregarPelicula x = new PanelAgregarPelicula();
+				contentPane.add(x);
+				x.setDefaultListModel(pModel);
+				contentPane.repaint();
+				contentPane.revalidate();
 			}
 		});
 		mnPeliculas.add(mntmAgregar);
@@ -43,13 +50,11 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarPeliculas x = new ListarPeliculas();
-				x.cambioVisibilidad(true);
 			}
 		});
 		mnPeliculas.add(mntmListar);
 	}
-	
+
 	public void cambioVisibilidad(boolean estado)
 	{
 		setVisible(true);
