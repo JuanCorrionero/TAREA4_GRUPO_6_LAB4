@@ -16,20 +16,19 @@ import java.awt.event.ActionEvent;
 
 public class MenuPrincipal extends JFrame {
 
-	private JPanel contentPane;
-
 
 	public MenuPrincipal(JList listaPeliculas, DefaultListModel pModel) {
+		getContentPane().setLayout(null);
+		
+		JPanel contentPane = new JPanel();
+		contentPane.setBounds(0, 0, 434, 240);
+		getContentPane().add(contentPane);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 434, 21);
-		contentPane.add(menuBar);
+		setJMenuBar(menuBar);
 		
 		JMenu mnPeliculas = new JMenu("Peliculas");
 		menuBar.add(mnPeliculas);
@@ -37,10 +36,9 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmAgregar = new JMenuItem("Agregar");
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//contentPane.removeAll();
-				PanelAgregarPelicula x = new PanelAgregarPelicula();
-				contentPane.add(x);
-				x.setDefaultListModel(pModel);
+				contentPane.removeAll();
+				PanelAgregarPelicula panelPelicula = new PanelAgregarPelicula();
+				contentPane.add(panelPelicula);
 				contentPane.repaint();
 				contentPane.revalidate();
 			}
@@ -50,7 +48,9 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
+			
 		});
 		mnPeliculas.add(mntmListar);
 	}
