@@ -48,7 +48,11 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				contentPane.removeAll();
+				panelListarPeliculas panelListar = new panelListarPeliculas();
+				contentPane.add(panelListar);
+				contentPane.repaint();
+				contentPane.revalidate();
 			}
 			
 		});
