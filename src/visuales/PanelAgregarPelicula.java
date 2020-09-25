@@ -109,12 +109,17 @@ public class PanelAgregarPelicula extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(cboCategoria.getSelectedIndex()==0 ) {JOptionPane.showMessageDialog(null, "Por favor selecionar un género"); }
+				try {
+					
+				
+				
+				if(cboCategoria.getSelectedIndex()==0 ) {JOptionPane.showMessageDialog(null, "Por favor selecionar un gï¿½nero"); }
 				else if (txtNombre.getText().isEmpty()==true ) { JOptionPane.showMessageDialog(null, "Por favor Agregar un nombre"); }
 				else {
 					
 					pelicula.setNombre(txtNombre.getText());
 					pelicula.setCategoria((Categorias)cboCategoria.getSelectedItem());
+					
 					
 					listModel.addElement(pelicula);
 					
@@ -126,6 +131,11 @@ public class PanelAgregarPelicula extends JPanel {
 					
 					
 					JOptionPane.showMessageDialog(null, "Pelicula agregada satisfactoriamente!"); }
+				
+				} catch (Exception e) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(null, "Error inesperado!!, vuelva a Intentarlo");
+				}	
 			}
 		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();

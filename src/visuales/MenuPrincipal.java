@@ -15,6 +15,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.TreeSet;
 import java.awt.event.ActionEvent;
 
 public class MenuPrincipal extends JFrame {
@@ -57,6 +60,16 @@ public class MenuPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
 				panelListarPeliculas panelListar = new panelListarPeliculas();
+				
+//				TreeSet<Peliculas> listaordenada = new TreeSet<Peliculas>();
+//				Collection list = Collections.list(pModel.elements());
+//				for(int i=0; i<pModel.getSize(); i++)
+//				{
+//					listaordenada.add(pModel(i));
+//				}
+//				
+				
+				
 				panelListar.setDefaultListModel(pModel);
 				contentPane.add(panelListar);
 				contentPane.repaint();

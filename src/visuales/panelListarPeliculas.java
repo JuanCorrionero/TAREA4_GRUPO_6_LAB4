@@ -5,10 +5,15 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 import clases.Peliculas;
+//import proyecto.Persona;
 
 import javax.swing.JList;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
@@ -58,7 +63,33 @@ public class panelListarPeliculas extends JPanel {
 	public void setDefaultListModel(DefaultListModel<Peliculas> listModelRecibido)
 	{
 		this.listModel = listModelRecibido;
+		sortList();
 		lista.setModel(this.listModel);
+		
+	}
+	
+	public void sortList(){
+	    Peliculas temp;
+	    Peliculas[] ob = new Peliculas[listModel.getSize()];
+	    for(int i = 0 ; i <listModel.getSize(); i++ )
+	        ob[i] = listModel.getElementAt(i);
+	    int n=ob.length;
+	    for(int i=0;i<n;i++)
+	        for(int j=0;j<n-i-1;j++)
+	        {
+	            if(ob[j].toString().compareTo(ob[j+1].toString())>0) // used to sort strings
+	            {
+	             temp=ob[j];
+	             ob[j]=ob[j+1];
+	             ob[j+1]=temp;
+	            }
+
+	          }
+	    listModel.removeAllElements();
+	    for(int i=0;i<n;i++)
+	      listModel.addElement((Peliculas) ob[i]);
+	    System.out.println("sort!");
+
 	}
 
 }
