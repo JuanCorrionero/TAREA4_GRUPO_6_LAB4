@@ -5,20 +5,20 @@ public class Peliculas {
 	private int id;
 	private String nombre;
 	private Categorias categoria;
-	private int count;
+	private static int count = 0;
 
 	public Peliculas() {
 		super();
-		this.id++;
-		this.count = id;
+		this.count++;
+		this.id = count;
 		this.nombre = "Sin nombre";
 		this.categoria = new Categorias();
 	}
 	
 	public Peliculas(String nombre, Categorias categoria) {
 		super();
-		this.id++;
-		this.count = id;
+		this.count++;
+		this.id = count;
 		this.nombre = nombre;
 		this.categoria = categoria;
 	}
