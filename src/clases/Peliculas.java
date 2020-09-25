@@ -5,19 +5,22 @@ public class Peliculas {
 	private int id;
 	private String nombre;
 	private Categorias categoria;
+	private int count;
 
 	public Peliculas() {
 		super();
 		this.id++;
+		this.count = id;
 		this.nombre = "Sin nombre";
-		this.categoria.setCategoria("Sin categoria");
+		this.categoria = new Categorias();
 	}
 	
-	public Peliculas(String nombre, String categoria) {
+	public Peliculas(String nombre, Categorias categoria) {
 		super();
 		this.id++;
+		this.count = id;
 		this.nombre = nombre;
-		this.categoria.setCategoria(categoria);
+		this.categoria = categoria;
 	}
 	public int getId() {
 		return id;
@@ -38,6 +41,15 @@ public class Peliculas {
 		this.categoria = categoria;
 	}
 	
+	public  int getCount() {
+		return count;
+	}
+
+	@Override
+	public String toString() {
+		return "Nombre: " + nombre + " Categoria=" + categoria.getCategoria() ;
+	}
+
 	
 	
 }

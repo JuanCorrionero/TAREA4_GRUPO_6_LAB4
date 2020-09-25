@@ -25,6 +25,8 @@ public class PanelAgregarPelicula extends JPanel {
 	private JLabel lbl_Id;
 	private JLabel lblNombre;
 	private JLabel lblCategoria;
+	private Peliculas pelicula;
+	private static int count;
 	private JComboBox<Categorias> cboCategoria;
 	private JButton btnAceptar;
 	private DefaultListModel<Peliculas> listModel;
@@ -57,6 +59,10 @@ public class PanelAgregarPelicula extends JPanel {
 		gbc_lblId.gridx = 3;
 		gbc_lblId.gridy = 2;
 		add(lblId, gbc_lblId);
+		
+		pelicula = new Peliculas();
+		lblId.setText(Integer.toString(pelicula.getId()));
+		
 		
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -105,7 +111,17 @@ public class PanelAgregarPelicula extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				if(cboCategoria.getSelectedIndex()==0 ) {JOptionPane.showMessageDialog(null, "Por favor selecionar un género"); }
 				else if (txtNombre.getText().isEmpty()==true ) { JOptionPane.showMessageDialog(null, "Por favor Agregar un nombre"); }
-				else { 
+				else {
+					
+					pelicula.setNombre(txtNombre.getText());
+					pelicula.setCategoria((Categorias)cboCategoria.getSelectedItem());
+					
+					listModel.addElement(pelicula);
+					
+					txtNombre.setText("");
+					cboCategoria.setSelectedIndex(0);
+					pelicula = new Peliculas();
+					lblId.setText(Integer.toString(pelicula.getId()));
 					
 					
 					

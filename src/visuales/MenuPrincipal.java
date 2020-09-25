@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clases.Peliculas;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -15,9 +18,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MenuPrincipal extends JFrame {
+	
+	
 
 
-	public MenuPrincipal(JList listaPeliculas, DefaultListModel pModel) {
+	public MenuPrincipal(DefaultListModel pModel) {
+		
 		getContentPane().setLayout(null);
 		
 		JPanel contentPane = new JPanel();
@@ -38,6 +44,7 @@ public class MenuPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
 				PanelAgregarPelicula panelPelicula = new PanelAgregarPelicula();
+				panelPelicula.setDefaultListModel(pModel);
 				contentPane.add(panelPelicula);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -50,6 +57,7 @@ public class MenuPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
 				panelListarPeliculas panelListar = new panelListarPeliculas();
+				panelListar.setDefaultListModel(pModel);
 				contentPane.add(panelListar);
 				contentPane.repaint();
 				contentPane.revalidate();
